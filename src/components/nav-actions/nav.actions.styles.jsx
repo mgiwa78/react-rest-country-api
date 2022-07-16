@@ -35,7 +35,6 @@ export const NavSearch = styled.input`
   border: none;
   border-radius: 5px;
   ${({ styleId }) => {
-    console.log(styleId);
     if (styleId === "light") {
       return css`
         &&::placeholder {

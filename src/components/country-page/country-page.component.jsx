@@ -31,7 +31,6 @@ const CountryPage = ({ pageStyle }) => {
   // const countryDisaplay = useSelector(SelectCountryToDisplay);
   const countriesObject = useSelector(SelectMemoisedCountries);
   useEffect(() => {
-    console.log(countriesObject[country_name]);
     setDisplayCountry(countriesObject[country_name]);
   }, []);
 

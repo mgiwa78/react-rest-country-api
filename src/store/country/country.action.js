@@ -21,7 +21,6 @@ export const SetMemoiesedCountries = (countries) => {
   countries.forEach((country) => {
     contriesObject[country.name] = country;
   });
-  console.log(contriesObject);
 
   return {
     type: COUNTRY_ACTION_TYPES.SET_COUNTRY_MEMO,

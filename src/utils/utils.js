@@ -38,8 +38,6 @@ export const fetchdata = async (url = "https://restcountries.com/v2/all") => {
       };
     });
 
-    console.log(FecthcedCountryData);
-
     return newCountriesAraay;
   } catch (error) {
     throw error;
