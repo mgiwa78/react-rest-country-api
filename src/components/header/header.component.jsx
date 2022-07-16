@@ -2,11 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { SetViewMode } from "../../store/mode/mode.action";
 import { SelectMode } from "../../store/mode/mode.selector";
-import {
-  HeaderContainer,
-  HeaderText,
-  HeaderToggle,
-} from "./header.styles";
+import { HeaderContainer, HeaderText, HeaderToggle } from "./header.styles";
 
 const Header = () => {
   const dispatch = useDispatch();

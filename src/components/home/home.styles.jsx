@@ -9,4 +9,7 @@ export const HomeContainer = styled.div`
   height: inherit;
   width: 100vw;
   padding: 0 120px 0 100px;
+  @media screen and (min-width: 1000px) {
+    padding: 65px;
+  }
 `;

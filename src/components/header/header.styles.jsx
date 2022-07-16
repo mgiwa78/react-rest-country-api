@@ -6,17 +6,20 @@ export const HeaderContainer = styled.div`
   position: absolute;
   justify-content: space-between;
   display: flex;
-  padding: 30px;
+  padding: 30px 30px;
   font-size: 18px;
   font-weight: 600;
   top: 0;
   left: 0;
 `;
-export const HeaderText = styled.div``;
+export const HeaderText = styled.div`
+  font-weight: 800;
+  font-size: 20px;
+`;
 export const HeaderToggle = styled.button`
   width: 120px;
   border: none;
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: 700;
 `;
 export const HeaderLabel = styled.label``;
