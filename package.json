@@ -2,7 +2,7 @@
   "name": "react-rest-country-api",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://mgiwa78.github.io/react-rest-country-api",
+  "homepage": "https://mgiwa78.github.io/react-rest-country-api/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
