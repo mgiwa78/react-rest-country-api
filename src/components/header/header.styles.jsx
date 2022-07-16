@@ -7,14 +7,14 @@ export const HeaderContainer = styled.div`
   justify-content: space-between;
   display: flex;
   padding: 30px;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
   top: 0;
   left: 0;
 `;
 export const HeaderText = styled.div``;
 export const HeaderToggle = styled.button`
-  width: 200px;
+  width: 120px;
   border: none;
   font-size: 16px;
   font-weight: 600;

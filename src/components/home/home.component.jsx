@@ -23,7 +23,6 @@ const Home = () => {
 
   return (
     <HomeContainer style={{ ...homeStyle }}>
-      <Header />
       <NavActions />
       <CountryDirectry />
     </HomeContainer>

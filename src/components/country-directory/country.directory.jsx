@@ -8,6 +8,7 @@ import {
   SelectCountriesFilter,
 } from "../../store/country/country.selector";
 import { SelectMode } from "../../store/mode/mode.selector";
+import { SetMemoiesedCountries } from "../../store/country/country.action";
 
 const CountryDirectry = () => {
   const CountiresArray = useSelector(SelectCountriesArray);
@@ -23,6 +24,7 @@ const CountryDirectry = () => {
   useEffect(() => {
     if (!CountiresArray) return;
     setCoutriesDisplay(CountiresArray);
+    dispatch(SetMemoiesedCountries(CountiresArray));
   }, [CountiresArray]);
   const dispatch = useDispatch();
 

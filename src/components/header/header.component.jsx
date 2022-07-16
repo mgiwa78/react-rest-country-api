@@ -21,6 +21,8 @@ const Header = () => {
         backgroundColor: "hsl(209, 23%, 22%)",
       },
       home: {
+        color: "white",
+
         backgroundColor: "hsl(207, 26%, 17%)",
       },
     },
@@ -32,6 +34,8 @@ const Header = () => {
         id: "light",
       },
       home: {
+        color: "hsl(200, 15%, 8%)",
+
         backgroundColor: "hsl(0, 0%, 98%)",
       },
     },

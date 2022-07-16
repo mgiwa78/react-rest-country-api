@@ -9,3 +9,22 @@ export const SetCountriesFilter = (countriesFilter) => {
     payload: countriesFilter,
   };
 };
+export const SetCountryToDisplay = (countryToDisplay) => {
+  return {
+    type: COUNTRY_ACTION_TYPES.SET_COUNTRY_TO_DISPLAY,
+    payload: countryToDisplay,
+  };
+};
+export const SetMemoiesedCountries = (countries) => {
+  const contriesObject = {};
+
+  countries.forEach((country) => {
+    contriesObject[country.name] = country;
+  });
+  console.log(contriesObject);
+
+  return {
+    type: COUNTRY_ACTION_TYPES.SET_COUNTRY_MEMO,
+    payload: contriesObject,
+  };
+};

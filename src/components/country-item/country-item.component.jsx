@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { SelectMode } from "../../store/mode/mode.selector";
+import { useNavigate } from "react-router-dom";
 import {
   CountryBox,
   CountryContent,
@@ -12,6 +13,8 @@ import {
   CountryTag,
   CountryTitle,
 } from "./country-item.styles";
+import { SetCountryToDisplay } from "../../store/country/country.action";
+import { SelectMemoisedCountries } from "../../store/country/country.selector";
 
 const CountryItem = ({ country, itemStyle }) => {
   const {
@@ -25,6 +28,13 @@ const CountryItem = ({ country, itemStyle }) => {
     topLevelDomain,
     currencies,
   } = country.otherProps;
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handlePageChnge = () => {
+    navigate(`/country/${country.name}`);
+  };
+
   // const countryData = {
   //   name: country.name,
   //   flag: country.flag,
@@ -42,7 +52,10 @@ const CountryItem = ({ country, itemStyle }) => {
   // const [itemStyle, setItemStyle] = useState(pageStyle);
 
   return (
-    <CountryItemCountainer style={{ ...itemStyle }}>
+    <CountryItemCountainer
+      onClick={() => handlePageChnge()}
+      style={{ ...itemStyle }}
+    >
       <CountryImage src={`${country.flag}`} />{" "}
       <CountryBox>
         <CountryTitle>{country.name}</CountryTitle>
