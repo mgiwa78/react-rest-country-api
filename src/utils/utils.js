@@ -13,17 +13,6 @@ export const fetchdata = async (url = "https://restcountries.com/v2/all") => {
     }
 
     const newCountriesAraay = FecthcedCountryData.map((rawCountryData) => {
-      // try {
-      //   console.log(
-      //     !rawCountryData.currencies
-      //       ? "none"
-      //       : rawCountryData.currencies[0]
-      //       ? rawCountryData.currencies[0]
-      //       : rawCountryData.currencies
-      //   );
-      // } catch (error) {
-      //   console.log("error herer", rawCountryData);
-      // }
       return {
         id:
           rawCountryData.population === 0
@@ -48,6 +37,8 @@ export const fetchdata = async (url = "https://restcountries.com/v2/all") => {
         },
       };
     });
+
+    console.log(FecthcedCountryData);
 
     return newCountriesAraay;
   } catch (error) {

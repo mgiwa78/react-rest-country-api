@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { SelectMode } from "../../store/mode/mode.selector";
 import CountryDirectry from "../country-directory/country.directory";
-import Header from "../header/header.component";
 import NavActions from "../nav-actions/nav.actions.component";
 import { HomeContainer } from "./home.styles";
 

@@ -26,6 +26,7 @@ const CountryDirectry = () => {
     setCoutriesDisplay(CountiresArray);
     dispatch(SetMemoiesedCountries(CountiresArray));
   }, [CountiresArray]);
+
   const dispatch = useDispatch();
 
   const modeChange = useSelector(SelectMode);
@@ -34,11 +35,12 @@ const CountryDirectry = () => {
     color: "white",
     backgroundColor: " hsl(209, 23%, 22%)",
   };
+
+  (() => {})();
   const [itemStyle, setItemStyle] = useState(defaultItemStyle);
 
   useEffect(() => {
     if (!modeChange) return;
-    console.log(modeChange);
     setItemStyle(modeChange.elements);
   }, [modeChange]);
 

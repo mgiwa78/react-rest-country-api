@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router";
-import {
-  SelectCountryToDisplay,
-  SelectMemoisedCountries,
-} from "../../store/country/country.selector";
+import { useNavigate, useParams } from "react-router";
+import { SelectMemoisedCountries } from "../../store/country/country.selector";
 import { SelectMode } from "../../store/mode/mode.selector";
 import {
+  BackButton,
   BorderBox,
   BorderBoxElements,
   BorderBoxTitle,
@@ -15,8 +13,9 @@ import {
   CountryContent,
   CountryContentBox,
   CountryCountainer,
+  CountryDetailsBox,
+  CountryDetailsTop,
   CountryImage,
-  CountryItemCountainer,
   CountryPrimaryBox,
   CountrySecondaryBox,
   CountryTag,
@@ -24,6 +23,7 @@ import {
 } from "./country-page.styles";
 
 const CountryPage = ({ pageStyle }) => {
+  const navigate = useNavigate();
   const param = useParams();
   const { country_name } = param;
   const [displayCountry, setDisplayCountry] = useState([]);
@@ -51,69 +51,96 @@ const CountryPage = ({ pageStyle }) => {
     color: "white",
     backgroundColor: " hsl(207, 26%, 17%)",
   };
-
+  const defaultBtnStyle = {
+    color: "#ffffffae",
+    backgroundColor: " hsl(209, 23%, 22%)",
+  };
   const modeChange = useSelector(SelectMode);
 
   const [itemStyle, setItemStyle] = useState(defaultPageStyle);
+  const [btnStyle, setBtnStyle] = useState(defaultBtnStyle);
   useEffect(() => {
     if (!modeChange) return;
     setItemStyle(modeChange.home);
+    setBtnStyle(modeChange.btn);
   }, [modeChange]);
+
+  const handleBack = (e) => {
+    e.preventDefault();
+
+    navigate("/");
+  };
 
   return (
     <CountryCountainer style={{ ...itemStyle }}>
-      <CountryImage src={`${displayCountry.flag}`} />{" "}
+      <BackButton onClick={(e) => handleBack(e)} style={{ ...btnStyle }}>
+        back
+      </BackButton>
       <CountryBox>
-        <CountryTitle>{displayCountry.name}</CountryTitle>
-        <CountryPrimaryBox>
-          <CountryContentBox>
-            <CountryTag>Native Name:</CountryTag>
-            <CountryContent>{nativeName}</CountryContent>
-          </CountryContentBox>
-          <CountryContentBox>
-            <CountryTag>Population:</CountryTag>
-            <CountryContent>{population}</CountryContent>
-          </CountryContentBox>
-          <CountryContentBox>
-            <CountryTag>Region:</CountryTag>
-            <CountryContent>{region}</CountryContent>
-          </CountryContentBox>
-          <CountryContentBox>
-            <CountryTag>Sub Region:</CountryTag>
-            <CountryContent>{subregion}</CountryContent>
-          </CountryContentBox>
-          <CountryContentBox>
-            <CountryTag>Capital:</CountryTag>
-            <CountryContent>{capital}</CountryContent>
-          </CountryContentBox>
-        </CountryPrimaryBox>
+        <CountryImage src={`${displayCountry.flag}`} />
+        <CountryDetailsBox>
+          <CountryDetailsTop>
+            <CountryPrimaryBox>
+              {" "}
+              <CountryTitle>{displayCountry.name}</CountryTitle>
+              <CountryContentBox>
+                <CountryTag>Native Name:</CountryTag>
+                <CountryContent>{nativeName}</CountryContent>
+              </CountryContentBox>
+              <CountryContentBox>
+                <CountryTag>Population:</CountryTag>
+                <CountryContent>{population}</CountryContent>
+              </CountryContentBox>
+              <CountryContentBox>
+                <CountryTag>Region:</CountryTag>
+                <CountryContent>{region}</CountryContent>
+              </CountryContentBox>
+              <CountryContentBox>
+                <CountryTag>Sub Region:</CountryTag>
+                <CountryContent>{subregion}</CountryContent>
+              </CountryContentBox>
+              <CountryContentBox>
+                <CountryTag>Capital:</CountryTag>
+                <CountryContent>{capital}</CountryContent>
+              </CountryContentBox>
+            </CountryPrimaryBox>
+            <CountrySecondaryBox>
+              <CountryContentBox>
+                <CountryTag>Top Level Domain:</CountryTag>
+                <CountryContent>{topLevelDomain}</CountryContent>
+              </CountryContentBox>
+              <CountryContentBox>
+                <CountryTag>Currencies:</CountryTag>
+                <CountryContent>{currencies.name}</CountryContent>
+              </CountryContentBox>
+              <CountryContentBox>
+                <CountryTag>Language:</CountryTag>
+                <CountryContent>
+                  {languages.map((element) => {
+                    return `${element.name}, `;
+                  })}
+                </CountryContent>
+              </CountryContentBox>
+            </CountrySecondaryBox>
+          </CountryDetailsTop>
 
-        <CountrySecondaryBox>
-          <CountryContentBox>
-            <CountryTag>Top Level Domain:</CountryTag>
-            <CountryContent>{topLevelDomain}</CountryContent>
-          </CountryContentBox>
-          <CountryContentBox>
-            <CountryTag>Currencies:</CountryTag>
-            <CountryContent>{currencies.name}</CountryContent>
-          </CountryContentBox>
-          <CountryContentBox>
-            <CountryTag>Language:</CountryTag>
-            <CountryContent>
-              {languages.map((element) => {
-                return `${element.name}, `;
-              })}
-            </CountryContent>
-          </CountryContentBox>
-        </CountrySecondaryBox>
-        <BorderBox>
-          <BorderBoxTitle>Border Counties:</BorderBoxTitle>
-          <BorderBoxElements>
-            <BorderButton>france</BorderButton>
-            <BorderButton>germany</BorderButton>
-            <BorderButton>netherlands</BorderButton>
-          </BorderBoxElements>
-        </BorderBox>
+          <BorderBox>
+            <BorderBoxTitle>Border Counties:</BorderBoxTitle>
+            {borders ? (
+              <BorderBoxElements>
+                {borders.map((border) => (
+                  <BorderButton style={{ ...btnStyle }} key={border}>
+                    {border}
+                  </BorderButton>
+                ))}
+              </BorderBoxElements>
+            ) : (
+              <BorderBoxElements>
+                <BorderButton style={{ ...btnStyle }}>None</BorderButton>
+              </BorderBoxElements>
+            )}
+          </BorderBox>
+        </CountryDetailsBox>
       </CountryBox>
     </CountryCountainer>
   );

@@ -4,7 +4,6 @@ import { SetViewMode } from "../../store/mode/mode.action";
 import { SelectMode } from "../../store/mode/mode.selector";
 import {
   HeaderContainer,
-  HeaderLabel,
   HeaderText,
   HeaderToggle,
 } from "./header.styles";
@@ -25,6 +24,11 @@ const Header = () => {
 
         backgroundColor: "hsl(207, 26%, 17%)",
       },
+      btn: {
+        color: "#ffffffae",
+
+        backgroundColor: "hsl(209, 23%, 22%)",
+      },
     },
     light: {
       id: "light",
@@ -37,6 +41,11 @@ const Header = () => {
         color: "hsl(200, 15%, 8%)",
 
         backgroundColor: "hsl(0, 0%, 98%)",
+      },
+      btn: {
+        color: "hsl(200, 15%, 8%)",
+
+        backgroundColor: "hsl(0, 0%, 100%)",
       },
     },
   };
